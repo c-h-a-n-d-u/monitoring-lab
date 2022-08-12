@@ -32,7 +32,7 @@ services:
   wordpress:
     build:
       context: wordpress
-    image: monitor/wordpress
+    image: monitor/wordpress:0.0.${BUILD_NUMBER}
     container_name: wordpress
     ports:
       - ${WORDPRESS_PORT}:8001
