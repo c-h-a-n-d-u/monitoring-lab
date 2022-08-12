@@ -18,7 +18,7 @@ services:
     build:
       context: petclinic
       dockerfile: Dockerfile.dc
-    image: monitor/petclinic:0.0.${BUILD_NUMBER}
+    image: 'monitor/petclinic:0.0.$(BUILD_NUMBER)'
     container_name: petclinic
     environment:
       - DBSERVERNAME=database
