@@ -3,7 +3,7 @@ services:
   database:
     build:
       context: database
-    image: monitor/database
+    image: monitor/database:${BUILD_NUMBER}
     container_name: database
     volumes:
       - type: volume
@@ -50,7 +50,7 @@ services:
   prometheus:
     build:
       context: prometheus
-    image: monitor/prometheus
+    image: monitor/prometheus:0.0.${BUILD_NUMBER}
     container_name: prometheus
     volumes:
       - type: volume
@@ -62,14 +62,14 @@ services:
   grafana:
     build:
       context: grafana
-    image: monitor/grafana
+    image: monitor/grafana:0.0.${BUILD_NUMBER}
     container_name: grafana
     ports:
       - ${GRAFANA_PORT}:3000
   dbclient:
     build:
       context: dbclient
-    image: monitor/dbclient
+    image: monitor/dbclient:0.0.${BUILD_NUMBER}
     container_name: dbclient
 
   # itrs:
