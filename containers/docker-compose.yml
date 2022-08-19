@@ -25,9 +25,8 @@ services:
     environment:
       - DBSERVERNAME=${DBSERVERNAME}
       - DBUSERNAME=root
-    #  - DBPASSWORD=${DB_NAME}
-      - DBPASSWORD=${DB_PASSWORD}
-    ports:
+      - DBPASSWORD=${DB_NAME}
+   ports:
       - ${PETCLINIC_PORT}:8080
       - ${PC_NP_PORT}:7036
   wordpress:
