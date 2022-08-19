@@ -26,7 +26,8 @@ services:
       - DBSERVERNAME=${DBSERVERNAME}
       - DBUSERNAME=root
       - DBPASSWORD=${DB_NAME}
-   ports:
+      
+    ports:
       - ${PETCLINIC_PORT}:8080
       - ${PC_NP_PORT}:7036
   wordpress:
