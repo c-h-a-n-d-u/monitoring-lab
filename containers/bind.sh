@@ -1,0 +1,1 @@
+/home/grads/hackathon3/monitoring-lab/containers/bind_check.py $(/usr/bin/sudo /usr/bin/netstat -tlnp | /usr/bin/grep 'tcp ' | /usr/bin/awk '{print $4,$NF}' | tr ' ' ',')
