@@ -1,14 +1,19 @@
-# #!/bin/sh
-# /usr/bin/echo "exit" | mysql -L root/petclinic@petclinic| /usr/bin/grep Connected > /dev/null
-# if [ $? -eq 0 ] 
-# then
-#    echo "OK"
-# else
-#   # /usr/bin/awk 'BEGIN{print "DB_CONN"}{print "NOT OK"}'
-#   echo "NOT OK"
-# fi
+#!/bin/sh
 
-# # echo "exit" assures that your program exits immediately (this gets piped to sqlplus). -L assures that sqlplus won't ask for password if credentials are not ok (which would make it get stuck as well).
 
-# # (> /dev/null just hides output from grep, which we don't need because the results are accessed via $? in this case)
+/usr/bin/curl 172.31.31.140:1180 > wordpress_curl.txt
+
+if /usr/bin/grep -q "Error establishing a database connection" wordpress_curl.txt; then
+    if [[ -n $(sudo netstat -tlnp | grep 0:3316| grep docker-proxy) ]] ; then 
+        printf "Application,status\nDatabase,Password changed\n";
+
+    else
+        printf "Application,status\nDatabase,Bind error\n";
+    fi
+else
+	printf "Application,status\nDatabase,OK\n";
+fi
+
+
+
 
