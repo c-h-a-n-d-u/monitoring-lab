@@ -11,7 +11,12 @@ scrape_configs:
       - targets: ['localhost:9090']
   - job_name: "Docker Job"
     static_configs:
-      - targets: ['172.17.0.1:9323']
+      - targets: ['172.31.31.140:9323']
+
+  
+  - job_name: 'cadvisor'
+    static_configs:
+    - targets: ['172.31.31.140:8081']
 
   - job_name: 'petclinic'
     # scrape_interval: 5s
@@ -33,3 +38,6 @@ scrape_configs:
       - targets: ['dbmon:9104','database:9995','database:9100','database:9256']
         labels:
           group: 'database'
+  - job_name: 'apache'
+    static_configs:
+      - targets: ['172.31.31.140:9117']
